@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 
@@ -6,9 +6,9 @@ import { useStateContext } from "../context";
 import { money } from "../assets";
 import { CustomButton, FormField, Loader } from "../components";
 import { checkIfImage } from "../utils";
-import { Web3Storage } from 'web3.storage'
+import { Web3Storage } from 'web3.storage';
 
-function getAccessToken () {
+function getAccessToken() {
   // If you're just testing, you can paste in a token
   // and uncomment the following line:
   // return 'paste-your-token-here'
@@ -17,24 +17,24 @@ function getAccessToken () {
   // environement variable or other configuration that's kept outside of
   // your code base. For this to work, you need to set the
   // WEB3STORAGE_TOKEN environment variable before you run your code.
-  return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDUzOENiMUZlOTVFN0RCZjUzZjFDNDM1YWUwMkFBMjgzRTY1NzZBQjEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2ODIxOTU2NTA2MDksIm5hbWUiOiJTb2JlckhhdmVuIn0.pM-sWqhkVK1SlTfj-GP7z4NoRIxpicS1HCoVdAo8fPs"
+  return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDUzOENiMUZlOTVFN0RCZjUzZjFDNDM1YWUwMkFBMjgzRTY1NzZBQjEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2ODIxOTU2NTA2MDksIm5hbWUiOiJTb2JlckhhdmVuIn0.pM-sWqhkVK1SlTfj-GP7z4NoRIxpicS1HCoVdAo8fPs";
 }
 
-function makeStorageClient () {
-  return new Web3Storage({ token: getAccessToken() })
+function makeStorageClient() {
+  return new Web3Storage({ token: getAccessToken() });
 }
 
 const CreatePost = () => {
-  
+
   const [flag, setFlag] = useState(false);
   const [link, setLink] = useState("");
-  const[name, setName] = useState("");
-  const[final, setFinal] = useState("");
+  const [name, setName] = useState("");
+  const [final, setFinal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingImg, setIsLoadingImg] = useState(false);
-  const [selectedFile, setSelectedFile] = useState()
+  const [selectedFile, setSelectedFile] = useState();
 
-  
+
   const navigate = useNavigate();
 
   const { publishPost } = useStateContext();
@@ -50,19 +50,19 @@ const CreatePost = () => {
 
 
 
-//  // const [isLoading, setIsLoading] = useState(false);
-//   async function storeFiles(files) {
-//     const client = makeStorageClient();
-//    // setIsLoading(true);
-//     const cid = await client.put(files)
-//   //  setIsLoading(false);
-//     console.log('stored files with cid:', cid)
-//     setLink(cid);
-    
-//     //console.log(link);
-//     setFlag(true);
-//     return cid
-//   }
+  //  // const [isLoading, setIsLoading] = useState(false);
+  //   async function storeFiles(files) {
+  //     const client = makeStorageClient();
+  //    // setIsLoading(true);
+  //     const cid = await client.put(files)
+  //   //  setIsLoading(false);
+  //     console.log('stored files with cid:', cid)
+  //     setLink(cid);
+
+  //     //console.log(link);
+  //     setFlag(true);
+  //     return cid
+  //   }
 
   // const [file, setFile] = useState()
   // function getFiles () {
@@ -74,35 +74,35 @@ const CreatePost = () => {
   //   setFinal(`https://${link}.ipfs.w3s.link/${newString}`)   
   //   console.log(final)
   //   return fileInput.files
-    
+
   //}
 
 
 
-// new
-const handleImage  = async (e) => {
-  // Files
+  // new
+  const handleImage = async (e) => {
+    // Files
 
-  if (e.target.files) {
-    setIsLoadingImg(true);
+    if (e.target.files) {
+      setIsLoadingImg(true);
 
-    const fileInput = document.querySelector('input[type="file"]')
-     var newString = fileInput.files[0].name.replace(/ /g, "%20");
+      const fileInput = document.querySelector('input[type="file"]');
+      var newString = fileInput.files[0].name.replace(/ /g, "%20");
 
-let g= e.target.files;
-let f = e.target.files[0].name;
+      let g = e.target.files;
+      let f = e.target.files[0].name;
 
-      setSelectedFile(e.target.files[0])
+      setSelectedFile(e.target.files[0]);
       const client = makeStorageClient();
-      const cid = await client.put(fileInput.files)
-      console.log('stored files with cid:', cid)
-  console.log(e.target.files[0].name)
-  console.log(`https://${cid}.ipfs.w3s.link/${newString}`)
-      setFinal(`https://${cid}.ipfs.w3s.link/${newString}`)  
+      const cid = await client.put(fileInput.files);
+      console.log('stored files with cid:', cid);
+      console.log(e.target.files[0].name);
+      console.log(`https://${cid}.ipfs.w3s.link/${newString}`);
+      setFinal(`https://${cid}.ipfs.w3s.link/${newString}`);
       setIsLoadingImg(false);
 
-  }
-}
+    }
+  };
 
 
 
@@ -112,10 +112,10 @@ let f = e.target.files[0].name;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     //console.log( form)
     console.log(final);
-    form.image= final;
+    form.image = final;
     console.log(form);
     console.log(link);
     setIsLoading(true);
@@ -185,6 +185,7 @@ let f = e.target.files[0].name;
             value={form.time}
             handleChange={(e) => handleFormFieldChange("time", e)}
           />
+
         </div>
 
         {/* <FormField
@@ -195,18 +196,18 @@ let f = e.target.files[0].name;
           handleChange={(e) => handleFormFieldChange("image", e)}
         /> */}
         <div className="py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] border-[#3a3a43] bg-transparent font-epilogue text-black text-[14px] placeholder:text-[#4b5264] rounded-[10px] sm:min-w-[300px]">
-        <input type="file" onChange={handleImage} />
-      {/* <button onClick={storeFiles(file)} >Submit</button> */}
-     {/* {()=>{setFinal(`https://${link}.ipfs.w3s.link/${name}`)
+          <input type="file" onChange={handleImage} />
+          {/* <button onClick={storeFiles(file)} >Submit</button> */}
+          {/* {()=>{setFinal(`https://${link}.ipfs.w3s.link/${name}`)
       console.log(final)}  } */}
-      {isLoadingImg && <p>loading ..</p> }
-      {!isLoadingImg&& final && <img src={final}className="mt-10 flex  place-content-center " alt="images" object-fit="cover" width="200" height="200" /> 
-      }
+          {isLoadingImg && <p>loading ..</p>}
+          {!isLoadingImg && final && <img src={final} className="mt-10 flex  place-content-center " alt="images" object-fit="cover" width="200" height="200" />
+          }
         </div>
-        
+
         <div className="flex justify-center items-center mt-[40px]">
           <CustomButton
-            btnType="submit" 
+            btnType="submit"
             title="Submit"
             styles="bg-sky-600"
           />
