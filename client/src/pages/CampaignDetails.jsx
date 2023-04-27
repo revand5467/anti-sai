@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { IoLocationSharp } from 'react-icons/io5';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { ethers } from 'ethers';
 import { format } from "date-fns";
@@ -19,7 +20,7 @@ const CampaignDetails = () => {
 
 
 
-  const date = new Date();
+  const date = state?.eventDate ? state?.eventDate : new Date();
 
   const formattedDate = format(date, "d MMM yyyy");
 
@@ -74,7 +75,7 @@ const CampaignDetails = () => {
 
           {/* Section 2 */}
 
-          <div className="bg-white">
+          <div className="bg-white mt-16">
             <div className="mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
               {/* <!-- Product --> */}
               <div className="lg:grid lg:grid-rows-1 lg:grid-cols-7 lg:gap-x-8 lg:gap-y-10 xl:gap-x-16">
@@ -101,31 +102,17 @@ const CampaignDetails = () => {
 
                     </div>
                   </div>
-                  {/* 
-                {CourseDuration && <p className="my-2 font-bold text-gray-900 text-xl flex items-center ">
-                  {" "}
-                  Duration <MdAccessTimeFilled className=" mx-1 " /> :{" "}
-                  {CourseDuration}
-                </p>} */}
 
 
 
-                  {/* // noOfStdView &&
-                  // <p className="my-2 font-bold text-gray-900 text-xl flex items-center">
-                  //   <MdPeople className=" mr-2 " /> Students  {noOfStdView}
-                  // </p> */}
 
+                  {<div className="my-2 flex-col sm:flex-row flex sm:flex-none  items-start font-bold text-gray-900 text-xl  sm:items-center ">
 
-                  {/* 
-                {CourseCode && <p className="my-2 font-bold text-gray-900 text-xl flex items-center ">
+                    <div className="sm:mb-0 mx-1 mb-2">Event time </div>  <div className="">{` ${formattedDate}`}</div></div>}
+                  {state?.location && <div className="my-2 flex-col sm:flex-row flex sm:flex-none  items-start font-bold text-gray-900 text-xl  sm:items-center ">
 
-                  Course Code <FaSlackHash className=" mx-1 " /> :{" "}
-
-                  {CourseCode}
-                </p>} */}
-                  {formattedDate && <div className="my-2 flex-col sm:flex-row flex sm:flex-none  items-start font-bold text-gray-900 text-xl  sm:items-center ">
-
-                    <div className="sm:mb-0 mx-1 mb-2">Event time </div>  <div className="">{` ${formattedDate}`}</div>
+                    <div className="sm:mb-0 mx-1 mb-2">                    <IoLocationSharp className=" mr-1 " />
+                    </div>  <div className="">{` ${state?.location}`}</div>
 
 
                   </div>}
@@ -177,7 +164,7 @@ const CampaignDetails = () => {
 
 
               <div className="flex-1">
-                <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">Fund</h4>
+                {/* <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">Fund</h4> */}
 
                 <div className="mt-[20px] flex flex-col p-4 bg-sky-100 rounded-[10px]">
                   <p className="font-epilogue font-extrabold text-[20px] leading-[30px] text-center text-blue-900">
@@ -189,7 +176,7 @@ const CampaignDetails = () => {
                       type="number"
                       placeholder="ETH 0.1"
                       step="0.01"
-                      className="w-full py-[10px] sm:px-[20px] px-[15px] outline-none border-[1px] border-[#3a3a43] bg-transparent font-epilogue text-white text-[18px] leading-[30px] placeholder:text-[#4b5264] rounded-[10px]"
+                      className="w-full py-[10px] sm:px-[20px] px-[15px] outline-none border-[1px] border-[#3a3a43] bg-transparent font-epilogue text-sky-900 text-[18px] leading-[30px] placeholder:text-[#4b5264] rounded-[10px]"
                       value={amount}
                       onChange={(e) => setAmount(e.target.value)}
                     />

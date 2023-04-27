@@ -7,7 +7,7 @@ import Card from './Card';
 
 
 
-const DisplayCampaigns = ({ title, isLoading, posts, isAdmin = false }) => {
+const DisplayCampaigns = ({ title, isLoading, posts, }) => {
   const [sortedPosts, setSortedPosts] = useState([]);
   const navigate = useNavigate();
 
@@ -64,7 +64,7 @@ const DisplayCampaigns = ({ title, isLoading, posts, isAdmin = false }) => {
 
           {!isLoading && sortedPosts?.length === 0 && (
             <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">
-              You have not created any campigns yet
+
             </p>
           )}
 
