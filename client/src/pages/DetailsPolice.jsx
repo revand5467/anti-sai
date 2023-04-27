@@ -126,7 +126,7 @@ function DetailsPolice() {
 
 
                                 <div className="mt-3 flex">
-                                    <p className='font-extrabold font-epilogue py-3 text-lg text-sky-700 '>Make a up vote to support the reporter</p>
+                                    <p className='font-extrabold font-epilogue py-3 text-lg text-sky-700 '>Make an up vote to support the reporter</p>
                                     <button
 
                                         onClick={() => { handleupVoteCall(state?.pId); }}
