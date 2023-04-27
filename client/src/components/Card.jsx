@@ -10,7 +10,7 @@ function Card({ owner, title, location, eventTime, description, amountCollected,
     const date = eventTime ? eventTime : "";
 
 
-    const formattedDate = format(date, "d MMM yyyy");
+    const formattedDate = format(date, "d MMM ");
 
     return (
         <>
@@ -38,7 +38,7 @@ function Card({ owner, title, location, eventTime, description, amountCollected,
                                 >
                                     {title ? title : " Name"}
                                 </h2>
-                                <p className="text-gray-800 text-base">{formattedDate}</p>
+                                <p className="text-gray-800 text-base">{`${formattedDate} 2023`}</p>
 
 
 
