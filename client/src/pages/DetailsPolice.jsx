@@ -35,7 +35,7 @@ function DetailsPolice() {
        await updatePublic(state.pId);
         //navigate('/');
         setIsLoading(false);
-        updatePublic(state.pId);
+       // updatePublic(state.pId);
         navigate('/')
 
     };
@@ -47,7 +47,7 @@ function DetailsPolice() {
        await reject(state.pId);
         //navigate('/');
         setIsLoading(false);
-        updatePublic(state.pId);
+      //  updatePublic(state.pId);
         navigate('/')
 
     };

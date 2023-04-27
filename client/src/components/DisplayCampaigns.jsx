@@ -17,7 +17,7 @@ const DisplayCampaigns = ({ title, isLoading, posts, isAdmin = false }) => {
 
   let postt = posts.filter((item, index) => {
     // Keep all items except for the one with title 'sge4g w4twt'
-    return item.showPublic !== false;
+    return item.showPublic !== false ;
   });
 
   useEffect(() => {

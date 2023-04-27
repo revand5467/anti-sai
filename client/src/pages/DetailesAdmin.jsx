@@ -47,7 +47,7 @@ function DetailesAdmin() {
        await reject(state.pId);
         //navigate('/');
         setIsLoading(false);
-        updatePolice(state.pId);
+       // updatePolice(state.pId);
         navigate('/')
 
     };
