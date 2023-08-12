@@ -18,3 +18,6 @@ action and catch the culprits or peddlers in the area.
 ## Abstract
 Read our abstract which we used for the hackathon submission    
 [Abstract](https://docs.google.com/document/d/1vsiWn7XdiudV2xPtEGjYgzjP5O1IbNpEbQ1hcw7PsYo/edit#heading=h.ok2o59qgm44d)
+##Installing
+npm i 
+npm run dev
